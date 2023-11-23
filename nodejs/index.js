@@ -7,14 +7,18 @@ const a = {
         },
         };
 
-        //  Read file 
+        //  Read file async call this will be done asyncronously
         const fs = require("fs") ;
 
-        fs.readFile("./sample.txt",(err,data)=>{
+        fs.readFile("./sample.txt","utf-8",(err,data)=>{
             if(err){
                 return err ;
             }
             console.log(data);
         });
+
+
+        //  The file will be syncronously execute
+        fs.readFileSync("./sample.txt","utf-8") ;
 
 module.exports = a ;

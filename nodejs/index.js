@@ -29,4 +29,6 @@ const a = {
             console.log(message) ;
         }) ;
 
+        console.log("abccd") ;
+
 module.exports = a ;

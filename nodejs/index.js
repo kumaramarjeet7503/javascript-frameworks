@@ -21,4 +21,12 @@ const a = {
         //  The file will be syncronously execute
         fs.readFileSync("./sample.txt","utf-8") ;
 
+
+        const message = "Demo to create file" ;
+
+        //  Write file with async call
+        fs.writeFile("./write.txt",message,()=>{
+            console.log(message) ;
+        }) ;
+
 module.exports = a ;

@@ -1,10 +1,7 @@
 const express = require("express") ;
-const bodyParser = require("body-parser") ;
 const app = express() ;
 const port = 4000 ;
 const path = require("path") ;
-app.use(bodyParser.urlencoded({extended: false})) ;
-app.use(express.json())
 //  Creating server with express
 
 app.listen(port,()=>{
@@ -24,26 +21,7 @@ app.get("/form",(req,res)=>{
 
 //  Post data recieved from form page
 app.post("/form",(req,res)=>{
-    console.log(req.body.email) ; 
-    res.send("<h1>Done</h1>")   
-})
-
-
-//  Send json to the client  via send function
-app.get("/json",(req,res)=>{
-        res.json({
-            name : "abhi",
-            email : "abcd@gmail.com",
-            password : "abcd" 
-        }) ;    
-})
-
-//  Get json data from the client  
-app.post("/json",(req,res)=>{
-    res.json({
-        name : req.body.name,
-        email : req.body.email
-    });
+        
 })
 
 app.get("/contact",(req,res)=>{

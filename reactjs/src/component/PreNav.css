@@ -1,0 +1,33 @@
+.PreNav{
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    color: white;
+}
+
+.PreNav > div{
+    background-color: black;
+    padding: 0.5vmax 4vmax ;
+
+}
+
+.PreNav > div > span{
+    color: grey;
+    font-size: 0.8 vmax;
+    
+}
+
+.PreNav > div > a {
+    color: grey;
+    font-weight: 300;
+    margin: 1vmax;
+}
+
+.PreNav > div > a:hover {
+    color: white;
+
+}
+
+.PreNav > div svg{
+    fill: white;
+    vertical-align: middle;
+}

@@ -1,0 +1,21 @@
+.hotAccessMenu
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hotAccessLink
+{
+    text-decoration: none;
+    padding: 0.5vmax;
+    margin: 1vmax;
+    color: grey;
+}
+
+.hotAccessLink:hover
+{
+    text-decoration: none;
+    color: orangered;
+    border-bottom: 1px solid orangered;
+}

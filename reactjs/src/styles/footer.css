@@ -1,0 +1,63 @@
+.preFooter1
+{
+    margin: 5vmax 0 0 0 ;
+    background-color: white;
+    padding: 1vmax;
+    padding-bottom: 0;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.preFooter1 > div
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: gray;
+    cursor: pointer;
+}
+
+.preFooter1  svg
+{
+    transform: scale(2) translateY(-0.2vmax);
+    margin: 2vmax;
+    color: grey;
+}
+
+.footer-block
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 2fr; 
+    padding: 4.5vmax;
+    background-color: black;
+}
+
+.footer-block  p{
+    color: grey;
+
+}
+
+
+.footer-block  a{
+    color: grey;
+
+}
+
+.footer-block > div{
+    margin: 1vmax;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-block  button{
+    margin: 1vmax;
+    background-color: black;
+    border: 1px solid white;
+    color: white;
+    transition: all 0.5s;
+}
+
+.footer-block  button:hover{
+    background-color: white;
+    color: black;
+}

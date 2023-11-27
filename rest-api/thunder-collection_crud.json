@@ -1,0 +1,75 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "mrn",
+    "dateExported": "2023-11-27T11:15:10.617Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "f0a60a05-ddf0-4b98-b093-58b070742894",
+            "colId": "99f28e29-edca-411e-b588-122d03ea536d",
+            "containerId": "",
+            "name": "create-product",
+            "url": "localhost:4000/api/v1/product/new",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-11-27T09:37:38.828Z",
+            "modified": "2023-11-27T10:44:09.261Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\" :  \"Euro ear pod\",\n  \"description\" : \"By base product used for listening and better performing skills\",\n  \"price\" :10000\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "d81eae72-3bfe-4833-b4fe-42267888c1a6",
+            "colId": "99f28e29-edca-411e-b588-122d03ea536d",
+            "containerId": "",
+            "name": "get-products",
+            "url": "localhost:4000/api/v1/product/get",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-11-27T10:10:25.753Z",
+            "modified": "2023-11-27T10:13:41.419Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "535f3490-1f18-4280-be1c-eb719ed4f3a1",
+            "colId": "99f28e29-edca-411e-b588-122d03ea536d",
+            "containerId": "",
+            "name": "update-product",
+            "url": "localhost:4000/api/v1/product/656469c438abfd6fbbf1749d",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2023-11-27T10:30:53.716Z",
+            "modified": "2023-11-27T10:32:42.581Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"name\": \"Samsung iwatch\",\n    \"description\": \"wrist band to watch time\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "22f86f9f-470f-4bd5-aa29-28e8cc2f21c3",
+            "colId": "99f28e29-edca-411e-b588-122d03ea536d",
+            "containerId": "",
+            "name": "delete-product",
+            "url": "localhost:4000/api/v1/delete/product/656469c438abfd6fbbf1749d",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2023-11-27T10:42:49.144Z",
+            "modified": "2023-11-27T10:44:53.596Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

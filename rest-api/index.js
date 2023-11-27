@@ -64,3 +64,22 @@ app.put("/api/v1/product/:id",async (req,res)=>{
         updatedProduct
     })
 })
+
+//  Delete API to delete a product
+app.delete("/api/v1/delete/product/:id",async (req,res)=>{
+    const deleteProduct = await product.findById(req.params.id) ;
+
+    if(!deleteProduct)
+    {
+        res.status(successStatus).json({
+            success:true,
+            message : "The product has not found"
+        })
+    }
+
+    deleteProduct.remove() ;
+    res.status(successStatus).json({
+        success:true,
+        message : "The product has been deleted successfully"
+    })
+})

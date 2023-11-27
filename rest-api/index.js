@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser") ;
 const successStatus = 200 ;
 
-
 //  Enable Body parser to pass response as json
 app.use(bodyParser.urlencoded({extended:false})) 
 app.use(express.json())
@@ -15,6 +14,14 @@ app.use(express.json())
 app.listen(port,()=>{
     console.log("Server started at http:localhost:"+port)
 })
+
+//  Made connection with mongo
+mongoose.connect("mongodb://127.0.0.1:27017/mrn").then(()=>{
+    console.log("successfully connected to mongodb") ;
+
+}).catch((err)=>{
+    console.log(err) ;
+}) 
 
 //  Create product schema and model, mongo db 
 const produtSchema = new mongoose.Schema({

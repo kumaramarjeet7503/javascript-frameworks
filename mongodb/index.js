@@ -19,6 +19,7 @@ const student = new mongoose.Schema({
 
 const client = new  mongoose.model("Student",student) ;
 
+//  saving can be done via .save function
 const adder = async ()=>{
     const ss = new client({
         name:"hem",
@@ -30,4 +31,19 @@ const adder = async ()=>{
     await ss.save() ;
 }
 
-adder() ;
+//  as well as can be created via create function
+const createStudent = async()=>{
+    const newStudent = await client.create({
+        name:"Ravind",
+        section:"43",
+        course:1,
+        active:true
+    })
+}
+
+const findStudent = async() =>{
+    const findStudent = await client.find() ;
+    console.log(findStudent);
+}
+findStudent();
+// createStudent() ;

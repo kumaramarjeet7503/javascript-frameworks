@@ -5,14 +5,15 @@ const path = require("path") ;
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser") ;
 
+//  Create port on definded server
 app.listen(port,()=>{
     console.log("Server started at http:localhost:"+port)
 })
 
-// const produtSchema = new mongoose.Schema({
-//     name:String,
-//     description : String,
-//     price : Number
-// })
+const produtSchema = new mongoose.Schema({
+    name:String,
+    description : String,
+    price : Number
+})
 
-// const product = new mongoose.model("Product",produtSchema)
+const product = new mongoose.model("Product",produtSchema)

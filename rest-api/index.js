@@ -16,7 +16,7 @@ app.listen(port,()=>{
 })
 
 //  Made connection with mongo
-mongoose.connect("mongodb://127.0.0.1:27017/mrn").then(()=>{
+mongoose.connect("mongodb://127.0.0.1:27017/demo").then(()=>{
     console.log("successfully connected to mongodb") ;
 
 }).catch((err)=>{
@@ -33,9 +33,34 @@ const product = new mongoose.model("Product",produtSchema)
 
 //  API for creating new product
  app.post("/api/v1/product/new",async (req,res)=>{
-    const product = await Product.create(req.body) ;
+     await product.create(req.body) ;
     res.status(successStatus).json({
         success:true,
         product
     })
  })
+
+//   API to get all product
+
+app.get("/api/v1/product/get",async (req,res)=>{
+    const getProduct = await product.find() ;
+   res.status(successStatus).json({
+       success:true,
+       getProduct
+   })
+})
+
+//  Update API to modify passed product
+app.put("/api/v1/product/:id",async (req,res)=>{
+    let updatedProduct = await product.findById(req.params.id) ;
+    updatedProduct = await product.findByIdAndUpdate(req.params.id,req.body,{
+        new:true,
+        useFindAndModify:true,
+        runValidators:true
+    }) ;
+
+    res.status(successStatus).json({
+        success:true,
+        updatedProduct
+    })
+})

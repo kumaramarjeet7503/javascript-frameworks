@@ -42,7 +42,7 @@ const createStudent = async()=>{
 }
 
 const findStudent = async() =>{
-    const findStudent = await client.find() ;
+    const findStudent = await client.find({name:{$eq:"hem"}}) ;
     console.log(findStudent);
 }
 findStudent();

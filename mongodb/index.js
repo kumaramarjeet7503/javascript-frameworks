@@ -19,11 +19,15 @@ const student = new mongoose.Schema({
 
 const client = new  mongoose.model("Student",student) ;
 
-const ss = new client({
-    name:"hem",
-    section:"10",
-    course:2,
-    active:true
-})
+const adder = async ()=>{
+    const ss = new client({
+        name:"hem",
+        section:"10",
+        course:2,
+        active:true
+    })
+    
+    await ss.save() ;
+}
 
-// await ss.save() ;
+adder() ;

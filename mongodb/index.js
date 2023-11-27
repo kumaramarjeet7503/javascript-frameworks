@@ -10,20 +10,20 @@ mongoose.connect("mongodb://127.0.0.1:27017/demo").then(()=>{
     console.log(err);
 })
 
-// const student = new mongoose.Schema({
-//     name:{type:String},
-//     section:String,
-//     course:Number,
-//     active : Boolean
-// })
+const student = new mongoose.Schema({
+    name:{type:String},
+    section:String,
+    course:Number,
+    active : Boolean
+})
 
-// const client = new  mongoose.model("Student",student) ;
+const client = new  mongoose.model("Student",student) ;
 
-// const ss = new client({
-//     name:"hem",
-//     section:"10",
-//     course:2,
-//     active:true
-// })
+const ss = new client({
+    name:"hem",
+    section:"10",
+    course:2,
+    active:true
+})
 
 // await ss.save() ;

@@ -1,15 +1,15 @@
 const express = require("express") ;
-const  {registerUser}  = require("../controller/userController");
+const  {registerUser, loginUser, logout, forgotPassword, resetPassword}  = require("../controller/userController");
 const router = express.Router() ;
 
-//  Get product with success response
-//  router.route("/products").get(getAllProducts);
-//  Route to create new product
+//  Route to login user
+ router.route("/user/login").post(loginUser);
+//  Route to create new user
 router.route("/user/new").post(registerUser);
-// //  Route to update product
-// router.route("/product/update/:id").post(updateProduct);
-// //  Route to delete product
-// router.route("/product/delete/:id").delete(deleteProduct);
-// //  Get Product details
-// router.route("/product/get/:id").get(getProductDetails);
+//  Logout user functionality
+router.route("/user/logout").get(logout) ;
+//  Forgot Password functionality
+router.route("/user/forgotpass").post(forgotPassword) ;
+//  Reset password functionality
+router.route("/user/resetpass/:token").put(resetPassword) ;
 module.exports = router ;

@@ -22,7 +22,7 @@ export function Examples(){
 </div>
 
 return  <Section id='examples'>
-        <Tabs ButtonsContainer="menu" buttons={<><TabButton isSelected={selectedText === "components"} onClick={()=>handleSelect('components')}>Components</TabButton>
+        <Tabs  buttons={<><TabButton isSelected={selectedText === "components"} onClick={()=>handleSelect('components')}>Components</TabButton>
             <TabButton  isSelected={selectedText === "jsx"}  onClick={()=>handleSelect('jsx')}>JSX</TabButton>
             <TabButton isSelected={selectedText === "props"}  onClick={()=>handleSelect('props')}>Props</TabButton>
             <TabButton  isSelected={selectedText === "state"} onClick={()=>handleSelect('state')}>State</TabButton></>} >  

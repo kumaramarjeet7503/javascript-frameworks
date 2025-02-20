@@ -6,16 +6,17 @@ const initialBoard = [
     [null,null,null]
 ]
 
-export default function GameBoard(){
+export default function GameBoard({activePlayerSymbol,onSelect}){
 
     const [gameBoard,setGameBoard] = useState(initialBoard)
 
     function handleClick(rowIndex, colIndex){
         setGameBoard((gameBoard)=>{
             const updatedBoard = [...gameBoard.map(innerArr => [...innerArr])]
-            updatedBoard[rowIndex][colIndex] = "X"
+            updatedBoard[rowIndex][colIndex] = activePlayerSymbol
             return updatedBoard
         })
+        onSelect();
     }
 
     return (<ol id="game-board">

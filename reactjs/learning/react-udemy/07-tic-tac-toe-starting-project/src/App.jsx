@@ -11,6 +11,10 @@ const INITIAL_BOARD = [
   [null, null, null],
 ];
 
+const PLAYERS = {
+  X:"PLAYER 1",
+  O:"PLAYER 2"
+}
 
 function deriveActivePlayer(prevTurn) {
   let currPlayer = "X";
@@ -45,10 +49,7 @@ function selectWinner(newGameBoard,player){
 }
 
 function App() {
-  const [player,setPlayer] = useState({
-    X:"Player 1",
-    O:"Player 2"
-  })
+  const [player,setPlayer] = useState(PLAYERS)
   const [gameTurn, setGameTurn] = useState([]);
   const activePlayer = deriveActivePlayer(gameTurn);
   let newGameBoard = deriveGameBoard(gameTurn)
@@ -83,14 +84,14 @@ function App() {
         <ol id="players" className="highlight-player">
           <Player
             initialName="Player1"
-            symbol="X"
-            isActive={activePlayer === "X"}
+            symbol={PLAYERS.X}
+            isActive={activePlayer === PLAYERS.X}
             onChangePlayer={handlePlayerName}
           ></Player>
           <Player
             initialName="Player2"
-            symbol="O"
-            isActive={activePlayer === "O"}
+            symbol={PLAYERS.O}
+            isActive={activePlayer === PLAYERS.O}
             onChangePlayer={handlePlayerName}
           ></Player>
         </ol>

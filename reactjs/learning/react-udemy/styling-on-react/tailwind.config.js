@@ -1,8 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{html,js}"],
+  content: ['./index.html',"./src/**/*.{jsx,ts,tsx,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        title: ['"cursive"']
+      }
+    },
   },
   plugins: [],
 }

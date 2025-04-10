@@ -7,6 +7,7 @@ function App() {
 
   const [projectList, addProject] = useState([])
   const [taskList, addTask] = useState([])
+  const [projectObj,setProject] = useState(null)
 
    const [showIndex,setShowIndex] = useState(true);
       const [showCreate,setShowCreate] = useState(false);
@@ -19,10 +20,20 @@ function App() {
         handleClick()
       }
 
-      function handleClick(){
+      function handleClick(project = null){
+      
+        if( 'target' in project){
           setShowIndex(index=> !index)
           setShowCreate(create=> !create)
+        }else{
+          setProject((prevProj)=>{
+            return {...prevProj,...project}
+          })
+          
+        }
+         
       }
+
 
 
   return (
@@ -31,8 +42,8 @@ function App() {
         <Nav />
       </header>
       <section id="content" className="flex">
-        <SideBar handleClick={handleClick} projectList={projectList} showIndex={showIndex} />
-        < Main handleClick={handleClick}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  />
+        <SideBar handleClick={handleClick}  projectList={projectList} showIndex={showIndex} />
+        < Main handleClick={handleClick} projectObj={projectObj}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  />
       </section>
     </>
   );

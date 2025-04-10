@@ -17,7 +17,7 @@ export default function NewProject({handleClick,addProject}) {
 
   function saveProject(e){
     e.preventDefault()
-    addProject(project.title)
+    addProject(project)
   }
 
   function handleInput(e){

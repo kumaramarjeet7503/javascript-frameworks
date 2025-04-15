@@ -7,9 +7,9 @@ export default function SideBar({handleClick,showIndex,projectList}){
           
      
 
-            return  (<aside style={{height: '100vh'}} className="bg-amber-950 w-[250px] rounded pl-5 min-h-10"> 
-                        <h2 className="text-white font-bold mt-20">YOUR PROJECTS</h2>
-                        {<button onClick={handleClick} className="text-white bg-amber-700  px-3 py-1 rounded mt-5 mb-3">+ Add Project</button>}
+            return  (<aside style={{height: '100vh'}} className="bg-[#2c190b]  w-[250px] rounded pl-5 min-h-10"> 
+                        <h2 className="text-white text-xl font-bold mt-12">YOUR PROJECTS</h2>
+                        {<button onClick={()=>handleClick(null)} className="text-white bg-[#9e8775a8]  px-3 py-1 rounded mt-5 mb-4">+ Add Project</button>}
                         <div>
                             {projectList.map((project,index)=>{
                                  

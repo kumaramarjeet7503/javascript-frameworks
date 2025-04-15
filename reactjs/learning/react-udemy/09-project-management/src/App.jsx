@@ -6,7 +6,7 @@ import { useState } from "react";
 function App() {
 
   const [projectList, addProject] = useState([])
-  const [taskList, addTask] = useState([])
+
   const [projectObj,setProject] = useState(null)
 
    const [showIndex,setShowIndex] = useState(true);
@@ -17,14 +17,15 @@ function App() {
             return [...prevPrj,project]
         })
 
-        handleClick()
+        handleClick(null)
       }
 
       function handleClick(project = null){
       
-        if( 'target' in project){
+        if(!project){
           setShowIndex(index=> !index)
           setShowCreate(create=> !create)
+          setProject(null)
         }else{
           setProject((prevProj)=>{
             return {...prevProj,...project}
@@ -32,6 +33,21 @@ function App() {
           
         }
          
+      }
+
+      function handleDelete(projectItem){
+         let index = -1;
+          projectList.forEach((prj,i) => {
+            if(prj.title === projectItem.title){
+                index = i
+            }
+        });
+                
+        addProject((prevPrj)=>{
+           return [...prevPrj.slice(0,index),...prevPrj.slice(index+1)]
+        })
+        setProject(null)
+
       }
 
 
@@ -42,8 +58,8 @@ function App() {
         <Nav />
       </header>
       <section id="content" className="flex">
-        <SideBar handleClick={handleClick}  projectList={projectList} showIndex={showIndex} />
-        < Main handleClick={handleClick} projectObj={projectObj}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  />
+        <SideBar handleClick={handleClick}   projectList={projectList} showIndex={showIndex} />
+        < Main handleClick={handleClick} handleDelete={handleDelete} projectObj={projectObj}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  />
       </section>
     </>
   );

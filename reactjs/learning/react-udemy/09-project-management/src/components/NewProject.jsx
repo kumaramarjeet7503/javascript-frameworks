@@ -13,7 +13,6 @@ export default function NewProject({handleClick,addProject}) {
 
   const [project,setProject] = useState(projectObj)
 
-  const projectForm = useRef()
 
   function saveProject(e){
     e.preventDefault()
@@ -31,7 +30,7 @@ export default function NewProject({handleClick,addProject}) {
   return (
 
     <section id="create-project" className="pl-20" style={{width:"80%"}}>
-            <form ref={projectForm} onSubmit={(e)=> saveProject(e)}  className="p-5">
+            <form  onSubmit={(e)=> saveProject(e)}  className="p-5">
       <div className="text-right">
         <button onClick={handleClick}  className="  p-1 pb-1.5 px-4 rounded mt-5 font-normal ml-auto">
           Cancel

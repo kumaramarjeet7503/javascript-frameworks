@@ -14,6 +14,26 @@ export default function ProjectDescription({ projectObj,handleDelete }) {
     setTaskName((prevTaskName=> ""))
 }
 
+    
+function removeTaskToList(task){
+
+  console.log("this is to remove tsk "+task)
+    let taskIndex = -1 
+        taskList.forEach((currTask,index)=>{
+                if(currTask == task) taskIndex = index
+        })
+        addTask((prevTask) => {
+          //  return  [...prevTask.slice(0,index),...prevTask.slice(index+1)]
+          console.log("task index :"+taskIndex)
+          
+          return [...prevTask.slice(0,taskIndex),...prevTask.slice(taskIndex+1)]
+          } )
+          console.log("task list :"+taskList)
+          setTaskName("")
+    }
+
+// }
+
   return (
     <div className="w-[80%] mx-auto my-10 ">
       <div className="flex justify-between py-1">
@@ -24,7 +44,7 @@ export default function ProjectDescription({ projectObj,handleDelete }) {
       <p className="py-3" >{projectObj.description}</p>
       <hr></hr>
    
-      <Task  addTaskToList={addTaskToList} taskName={taskName} setTaskName={setTaskName}  taskList={taskList} ></Task>
+      <Task  addTaskToList={addTaskToList} taskName={taskName} setTaskName={setTaskName}  handleTaskClearance={removeTaskToList}  taskList={taskList} ></Task>
       
     </div>
   );

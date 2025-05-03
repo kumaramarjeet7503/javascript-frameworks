@@ -1,38 +1,10 @@
 import { useState } from 'react';
 import Task from './Task.jsx'
 
-export default function ProjectDescription({ projectObj,handleDelete }) {
-
-
-  const [taskList, addTask] = useState([])
-  const [taskName,setTaskName] = useState("")
-  
-  function addTaskToList(task){
-    addTask(prevTask=>{
-       return   [...prevTask,task]
-    });
-    setTaskName((prevTaskName=> ""))
-}
-
-    
-function removeTaskToList(task){
-
-  console.log("this is to remove tsk "+task)
-    let taskIndex = -1 
-        taskList.forEach((currTask,index)=>{
-                if(currTask == task) taskIndex = index
-        })
-        addTask((prevTask) => {
-          //  return  [...prevTask.slice(0,index),...prevTask.slice(index+1)]
-          console.log("task index :"+taskIndex)
-          
-          return [...prevTask.slice(0,taskIndex),...prevTask.slice(taskIndex+1)]
-          } )
-          console.log("task list :"+taskList)
-          setTaskName("")
-    }
-
+export default function ProjectDescription({ projectObj,handleDelete, handleTaskInput,removeTaskToList,addTaskToList,taskList, taskName  }) {
 // }
+
+
 
   return (
     <div className="w-[80%] mx-auto my-10 ">
@@ -44,7 +16,7 @@ function removeTaskToList(task){
       <p className="py-3" >{projectObj.description}</p>
       <hr></hr>
    
-      <Task  addTaskToList={addTaskToList} taskName={taskName} setTaskName={setTaskName}  handleTaskClearance={removeTaskToList}  taskList={taskList} ></Task>
+      <Task taskList={taskList}  handleTaskInput={handleTaskInput} projectTitle = {projectObj.title}  removeTaskToList={removeTaskToList} taskName={taskName} addTaskToList={addTaskToList}></Task>
       
     </div>
   );

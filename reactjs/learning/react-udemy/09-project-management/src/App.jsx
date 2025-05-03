@@ -21,6 +21,7 @@ function App() {
             return [...prevPrj,project]
         })
 
+        console.log(prjTaskList)
 
         setPrjTaskList(prevList => {
             if(prevList.hasOwnProperty(project)) return {...prevList}
@@ -57,6 +58,15 @@ function App() {
         addProject((prevPrj)=>{
            return [...prevPrj.slice(0,index),...prevPrj.slice(index+1)]
         })
+
+        setPrjTaskList(prevList => {
+          // if(prevList.hasOwnProperty(projectItem.title))  
+             const { [projectItem.title]: _, ...updatedList } =  prevList
+          return updatedList
+      })
+
+      console.log(prjTaskList)
+
         setProject(null)
 
       }
@@ -99,20 +109,33 @@ function App() {
     }
     
         
-    function removeTaskToList(task){
+    function removeTaskToList(task,projectTitle){
     
       console.log("this is to remove tsk "+task)
         let taskIndex = -1 
-            taskList.forEach((currTask,index)=>{
-                    if(currTask == task) taskIndex = index
-            })
-            addTask((prevTask) => {
-              //  return  [...prevTask.slice(0,index),...prevTask.slice(index+1)]
-              console.log("task index :"+taskIndex)
+        //     taskList.forEach((currTask,index)=>{
+        //             if(currTask == task) taskIndex = index
+        //     })
+        //     addTask((prevTask) => {
+        //       //  return  [...prevTask.slice(0,index),...prevTask.slice(index+1)]
+        //       console.log("task index :"+taskIndex)
               
-              return [...prevTask.slice(0,taskIndex),...prevTask.slice(taskIndex+1)]
-              } )
-              console.log("task list :"+taskList)
+        //       return [...prevTask.slice(0,taskIndex),...prevTask.slice(taskIndex+1)]
+        //       } )
+              // console.log("task list :"+taskList)
+
+              setPrjTaskList((prevObj) => {
+
+                if(prevObj.hasOwnProperty(projectTitle) && !prevObj[projectTitle].includes(task)) return {...prevObj}
+                 taskIndex = prevObj[projectTitle].findIndex(currTask => currTask === task)
+                // if(prevObj[projectTitle].includes('')) prevObj[projectTitle].shift()
+                const updatedPrjTaskObj = [...prevObj[projectTitle].slice(0,taskIndex),...prevObj[projectTitle].slice(taskIndex+1)]
+                
+                return {...prevObj,[projectTitle]:updatedPrjTaskObj}
+        });
+  
+              
+
               setTaskName("")
         }
     

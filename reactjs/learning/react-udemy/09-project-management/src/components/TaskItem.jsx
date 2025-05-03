@@ -1,6 +1,6 @@
-export default function TaskItem({task, handleTaskClearance}){
+export default function TaskItem({task, handleTaskClearance,projectTitle}){
     return <div className="flex justify-between">
         <p >{task}</p>
-        <button onClick={()=>handleTaskClearance(task)} >Clear</button>
+        <button onClick={()=>handleTaskClearance(task,projectTitle)} >Clear</button>
         </div>
 }

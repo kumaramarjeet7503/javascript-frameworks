@@ -8,92 +8,42 @@ function App() {
 
 
   //  For project
-  const [projectList, addProject] = useState([])
+  // const [projectList, addProject] = useState([])
   const [prjTaskList,setPrjTaskList] = useState({})
-
   const [projectObj,setProject] = useState(null)
-
    const [showIndex,setShowIndex] = useState(true);
       const [showCreate,setShowCreate] = useState(false);
-  
-      function addProjectItem(project){
-        addProject(prevPrj =>{
-            return [...prevPrj,project]
-        })
 
-        console.log(prjTaskList)
-
-        setPrjTaskList(prevList => {
-            if(prevList.hasOwnProperty(project)) return {...prevList}
-            else return {...prevList,[project.title]:[]} 
-        })
-        console.log(prjTaskList)
-
-        handleClickForProject(null)
-      }
-
-      function handleClickForProject(project = null){
-      
-        if(!project){
-          setShowIndex(index=> !index)
-          setShowCreate(create=> !create)
-          setProject(null)
-        }else{
-          setProject((prevProj)=>{
-            return {...prevProj,...project}
-          })
-          
-        }
-         
-      }
-
-      function handleDelete(projectItem){
-         let index = -1;
-          projectList.forEach((prj,i) => {
-            if(prj.title === projectItem.title){
-                index = i
-            }
-        });
-                
-        addProject((prevPrj)=>{
-           return [...prevPrj.slice(0,index),...prevPrj.slice(index+1)]
-        })
-
-        setPrjTaskList(prevList => {
-          // if(prevList.hasOwnProperty(projectItem.title))  
-             const { [projectItem.title]: _, ...updatedList } =  prevList
-          return updatedList
+      const [projectState,setProjectState] = useState({
+        projects:[],
+        selectedProjectId:undefined
       })
+ 
 
-      console.log(prjTaskList)
-
-        setProject(null)
-
+      function handleNewProject(projectId){
+        setProjectState(prevState=>  {
+          return {
+            ...prevState,
+            selectedProjectId:projectId
+          }
+        })
       }
 
+      function handleAddProject( projectData){
+        console.log(projectData)
 
-      //  For Task 
-      const [taskList, addTask] = useState([])
- 
+        const newProject = {...projectData,id: Math.random()}
+        setProjectState(prevState=>{
+          return{
+            ...prevState,
+            projects: [...prevState.projects,newProject]
+          }
+        })
+      }
+
       const [taskName,setTaskName] = useState("")
       
       function addTaskToList(task,projectTitle){
-        // addTask((prevTask)=>{
-        //   // let prjCons = {};
-        //   // prjCons[projectTitle,taskList]
-
-        //     // if(prevTask.length > 0 && prevTask.includes(projectTitle)){
-        //     //     prevTask[projectTitle].push(task) 
-        //     // }else{
-        //     //   prevTask[projectTitle] = [task]
-        //     // }
-
-        //     return [...prevTask]
-        //   //  return  {...prevTask,[projectTitle]:[...(prevTask[projectTitle]  || [] ),task]}
-        // });
-
-       
-
         setPrjTaskList((prevObj) => {
 
               if(prevObj.hasOwnProperty(projectTitle) && prevObj[projectTitle].includes(task)) return {...prevObj}
@@ -113,17 +63,6 @@ function App() {
     
       console.log("this is to remove tsk "+task)
         let taskIndex = -1 
-        //     taskList.forEach((currTask,index)=>{
-        //             if(currTask == task) taskIndex = index
-        //     })
-        //     addTask((prevTask) => {
-        //       //  return  [...prevTask.slice(0,index),...prevTask.slice(index+1)]
-        //       console.log("task index :"+taskIndex)
-              
-        //       return [...prevTask.slice(0,taskIndex),...prevTask.slice(taskIndex+1)]
-        //       } )
-              // console.log("task list :"+taskList)
-
               setPrjTaskList((prevObj) => {
 
                 if(prevObj.hasOwnProperty(projectTitle) && !prevObj[projectTitle].includes(task)) return {...prevObj}
@@ -133,9 +72,6 @@ function App() {
                 
                 return {...prevObj,[projectTitle]:updatedPrjTaskObj}
         });
-  
-              
-
               setTaskName("")
         }
     
@@ -153,8 +89,9 @@ function App() {
         <Nav />
       </header>
       <section id="content" className="flex">
-        <SideBar handleClick={handleClickForProject}   projectList={projectList} showIndex={showIndex} />
-        < Main  taskList={prjTaskList}  handleTaskInput={handleTaskInput}  removeTaskToList={removeTaskToList} taskName={taskName} addTaskToList={addTaskToList} handleClickForProject={handleClickForProject} handleDelete={handleDelete} projectObj={projectObj}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  />
+        <SideBar handleNewProject={handleNewProject} projectState={projectState}  />
+        {/* < Main  taskList={prjTaskList}  handleTaskInput={handleTaskInput}  removeTaskToList={removeTaskToList} taskName={taskName} addTaskToList={addTaskToList} handleClickForProject={handleClickForProject} handleDelete={handleDelete} projectObj={projectObj}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  /> */}
+        <Main handleNewProject={handleNewProject} projectState={projectState} handleAddProject={handleAddProject} ></Main>
       </section>
     </>
   );

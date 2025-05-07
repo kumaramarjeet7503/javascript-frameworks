@@ -1,4 +1,4 @@
-import { useState } from "react"
+
 import Button from './Button.jsx'
 import Project from './Project.jsx'
 
@@ -11,10 +11,8 @@ export default function SideBar({handleNewProject,projectState}){
                         <h2 className="text-white text-xl font-bold mt-12">YOUR PROJECTS</h2>
                         {<Button onClick={()=>handleNewProject(null)} className="text-white bg-[#9e8775a8]  px-3 py-1 rounded mt-5 mb-4">+ Add Project</Button>}
                         <div>
-                            {projectState.projects.map((project,index)=>{
-                                 
-                                return   <Project handleClick={handleNewProject} key={project.id} project={project} index={index}></Project>   
-                            
+                            {projectState.projects.map((project)=>{
+                                return   <Project  key={project.id} project={project}></Project>   
                             })}
                         </div>
                     </aside>)

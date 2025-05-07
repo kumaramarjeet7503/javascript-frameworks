@@ -1,7 +1,8 @@
 import SideBar from "./components/SideBar.jsx";
 import Main from "./components/Main.jsx";
 import Nav from "./components/Nav.jsx";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import Modal from "./components/Modal.jsx";
 
 function App() {
 
@@ -30,8 +31,6 @@ function App() {
       }
 
       function handleAddProject( projectData){
-        console.log(projectData)
-
         const newProject = {...projectData,id: Math.random()}
         setProjectState(prevState=>{
           return{
@@ -82,7 +81,6 @@ function App() {
         
 
 
-
   return (
     <>
       <header>
@@ -92,6 +90,7 @@ function App() {
         <SideBar handleNewProject={handleNewProject} projectState={projectState}  />
         {/* < Main  taskList={prjTaskList}  handleTaskInput={handleTaskInput}  removeTaskToList={removeTaskToList} taskName={taskName} addTaskToList={addTaskToList} handleClickForProject={handleClickForProject} handleDelete={handleDelete} projectObj={projectObj}  addProject={addProjectItem} showCreate={showCreate} showIndex={showIndex}  /> */}
         <Main handleNewProject={handleNewProject} projectState={projectState} handleAddProject={handleAddProject} ></Main>
+       
       </section>
     </>
   );

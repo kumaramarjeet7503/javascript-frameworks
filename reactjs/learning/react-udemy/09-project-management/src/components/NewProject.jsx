@@ -1,13 +1,15 @@
 import { useRef, useState } from "react";
 import Input from './Input.jsx'
 import Button from './Button.jsx'
+import Modal from "./Modal.jsx";
 
 export default function NewProject({handleNewProject,handleAddProject}) {
 
-
+//  Ref is used to get the updated value without setting or changing a state
   let title = useRef()
   let description = useRef()
   let dueDate = useRef()
+  const modal = useRef()
 
   // let projectObj = {
   //   title:"",
@@ -23,7 +25,10 @@ export default function NewProject({handleNewProject,handleAddProject}) {
 
   function saveProject(e){
     e.preventDefault()
-    console.log(title.current.value)
+    if(!title.current.value || !description.current.value || !dueDate.current.value){
+      modal.current.open()
+      return
+    }
     handleAddProject({
       title:title.current.value,
       description: description.current.value,
@@ -52,6 +57,7 @@ export default function NewProject({handleNewProject,handleAddProject}) {
         <Button className="bg-amber-950 text-white " onClick={saveProject}> Save</Button>
       </div>
 
+{/*  Here in order to use ref, associate the defined useRef element to ref attribute */}
       <Input className="w-full" ref={title} type="text" label={"title"} ></Input>
       <Input className="w-full"  ref={description} textarea  label={"description"}></Input>
       <Input className="w-full py-1"  ref={dueDate} type="date"  label={"due Date"}></Input>
@@ -68,6 +74,10 @@ export default function NewProject({handleNewProject,handleAddProject}) {
           <input onChange={(e) => handleInput(e)} id="dueDate" value={project.dueDate} className="bg-gray-300 p-1 text-sm" style={{width: "100%"}}  type="date" />
         </div>  */}
       </form>
+      <Modal ref={modal}>
+        <h2>Invalid Input !!!</h2>
+        <p>Please fill all the details on the page.</p>
+      </Modal>
     </section>
   );
 }

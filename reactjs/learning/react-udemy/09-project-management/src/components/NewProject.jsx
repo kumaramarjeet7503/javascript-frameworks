@@ -74,9 +74,10 @@ export default function NewProject({handleNewProject,handleAddProject}) {
           <input onChange={(e) => handleInput(e)} id="dueDate" value={project.dueDate} className="bg-gray-300 p-1 text-sm" style={{width: "100%"}}  type="date" />
         </div>  */}
       </form>
-      <Modal ref={modal}>
-        <h2>Invalid Input !!!</h2>
-        <p>Please fill all the details on the page.</p>
+      <Modal ref={modal} buttonCaption="Close" >
+        <h2 className="text-xl font-bold text-stone-900 mb-4">Invalid Input !!!</h2>
+        <p className="text-stone-800 ">Please fill all the details on the page.</p>
+        <p className="text-stone-800 mb-1">Please make sure you provide a valid value for the field.</p>
       </Modal>
     </section>
   );

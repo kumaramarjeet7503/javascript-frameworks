@@ -4,7 +4,7 @@ import Button from './Button.jsx'
 import { useRef } from "react"
 import Input from "./Input"
 
-export default function Task({tasks,handleAddTask,projectId}){
+export default function Task({tasks,handleAddTask,projectId,handleTaskClearance}){
 
     const taskName = useRef()
 
@@ -23,7 +23,10 @@ export default function Task({tasks,handleAddTask,projectId}){
         <Button  onClick={addTask}  className="px-2">Add Task</Button>
       </div>                                                    
         { tasks.map((task,index)=>{
-          return <p key={index}>{task}</p>
+          return <div className="flex justify-between">
+                  <p key={index}>{task}</p>
+                  <button onClick={()=>handleTaskClearance(task,projectId)} >Clear</button>
+                </div>
           // return <TaskItem key={task} task={task} projectTitle={projectTitle} handleTaskClearance={removeTaskToList}  ></TaskItem> 
         })  }
     

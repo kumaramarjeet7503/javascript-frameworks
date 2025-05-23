@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Task from './Task.jsx'
 import Button from './Button.jsx'
 
-export default function ProjectDescription({ projectState,handleProjectDeletion,handleAddTask}) {
+export default function ProjectDescription({ projectState,handleProjectDeletion,handleAddTask,handleTaskClearance}) {
 
  console.log(`project state: ${projectState.projects}`)
  const project = projectState.projects.filter(proj=>  proj.id === projectState.selectedProjectId)[0]
@@ -19,7 +19,7 @@ export default function ProjectDescription({ projectState,handleProjectDeletion,
       <p >{project.dueDate }</p>
       <p className="py-3" >{project.description}</p>
       <hr></hr>
-      <Task tasks={project.tasks} projectId={project.id} handleAddTask={handleAddTask} ></Task>
+      <Task tasks={project.tasks} projectId={project.id} handleAddTask={handleAddTask} handleTaskClearance={handleTaskClearance} ></Task>
       
     </div>
   );

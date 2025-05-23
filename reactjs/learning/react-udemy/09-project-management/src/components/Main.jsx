@@ -5,7 +5,7 @@ import Index from "./Index.jsx"
 // export default function Main({handleClickForProject,showIndex,showCreate,addProject,
 //    projectObj,handleDelete, handleTaskInput,removeTaskToList,addTaskToList,taskList, taskName}) {
 
-export default function Main({handleNewProject, projectState, handleAddProject, handleProjectDeletion,handleAddTask}) {
+export default function Main({handleNewProject, projectState, handleAddProject, handleProjectDeletion,handleAddTask,handleTaskClearance}) {
 
 
     // let prjTaskList = []
@@ -19,7 +19,8 @@ export default function Main({handleNewProject, projectState, handleAddProject, 
     <main id="main" style={{width: "82vw"}} >
      { projectState.selectedProjectId === undefined  && < Index handleNewProject={handleNewProject}  />}
       {projectState.selectedProjectId === null && <NewProject handleAddProject={handleAddProject} handleNewProject={handleNewProject}  />}
-      {projectState.selectedProjectId && <  ProjectDescription handleAddTask={handleAddTask} handleProjectDeletion={handleProjectDeletion} projectState={projectState}  ></ProjectDescription>}
+      {projectState.selectedProjectId && <  ProjectDescription handleAddTask={handleAddTask}
+            handleProjectDeletion={handleProjectDeletion} projectState={projectState} handleTaskClearance={handleTaskClearance} ></ProjectDescription>}
     </main>
   );
 }

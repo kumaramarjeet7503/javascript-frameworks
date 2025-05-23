@@ -78,7 +78,18 @@ function App() {
     });
   }
 
-  function handleTaskClearance(task, projectId) {}
+  function handleTaskClearance(task, projectId) {
+    setProjectState((prevState) => {
+     const updatedProject = prevState.projects.map((project) => {
+      if (project.id === projectId && project.tasks.includes(task))  project.tasks = project.tasks.filter(taskItem => taskItem !== task );
+      return { ...project };
+    });
+    return {
+      projects: [...updatedProject],
+      selectedProjectId: projectId,
+    };
+  });
+  }
 
   return (
     <>
@@ -98,6 +109,7 @@ function App() {
           handleAddProject={handleAddProject}
           handleProjectDeletion={handleProjectDeletion}
           handleAddTask={handleAddTask}
+          handleTaskClearance={handleTaskClearance}
         ></Main>
       </section>
     </>

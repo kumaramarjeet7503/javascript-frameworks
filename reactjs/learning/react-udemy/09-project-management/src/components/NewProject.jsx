@@ -32,7 +32,8 @@ export default function NewProject({handleNewProject,handleAddProject}) {
     handleAddProject({
       title:title.current.value,
       description: description.current.value,
-      dueDate: formatDate(dueDate.current.value)
+      dueDate: formatDate(dueDate.current.value),
+      tasks:[]
     })
     handleNewProject(undefined)
   }

@@ -2,7 +2,13 @@ import { useState } from 'react';
 import Task from './Task.jsx'
 import Button from './Button.jsx'
 
-export default function ProjectDescription({ project,handleProjectDeletion}) {
+export default function ProjectDescription({ projectState,handleProjectDeletion,handleAddTask}) {
+
+ console.log(`project state: ${projectState.projects}`)
+ const project = projectState.projects.filter(proj=>  proj.id === projectState.selectedProjectId)[0]
+
+ console.log("project: "+project)
+
 
   return (
     <div className="w-[80%] mx-auto my-10 ">
@@ -13,7 +19,7 @@ export default function ProjectDescription({ project,handleProjectDeletion}) {
       <p >{project.dueDate }</p>
       <p className="py-3" >{project.description}</p>
       <hr></hr>
-      {/*<Task taskList={taskList}  handleTaskInput={handleTaskInput} projectTitle = {projectObj.title}  removeTaskToList={removeTaskToList} taskName={taskName} addTaskToList={addTaskToList}></Task> */}
+      <Task tasks={project.tasks} projectId={project.id} handleAddTask={handleAddTask} ></Task>
       
     </div>
   );

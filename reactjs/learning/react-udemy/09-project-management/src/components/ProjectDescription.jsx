@@ -4,11 +4,7 @@ import Button from './Button.jsx'
 
 export default function ProjectDescription({ projectState,handleProjectDeletion,handleAddTask,handleTaskClearance}) {
 
- console.log(`project state: ${projectState.projects}`)
  const project = projectState.projects.filter(proj=>  proj.id === projectState.selectedProjectId)[0]
-
- console.log("project: "+project)
-
 
   return (
     <div className="w-[80%] mx-auto my-10 ">

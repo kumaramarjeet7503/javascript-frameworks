@@ -1,6 +1,5 @@
 
 import Button from './Button.jsx'
-import Project from './Project.jsx'
 
 export default function SideBar({handleNewProject,projectState, handleProjectSelection}){
 

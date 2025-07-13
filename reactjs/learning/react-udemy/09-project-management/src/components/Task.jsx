@@ -12,9 +12,6 @@ export default function Task({tasks,handleAddTask,projectId,handleTaskClearance}
         handleAddTask(taskName.current.value,projectId)
         taskName.current.value = ""
     }
-
-
-
     return <div className="py-5">
     <h2 className="font-bold text-xl">Tasks</h2>
    

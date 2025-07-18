@@ -68,19 +68,19 @@ function App() {
   const ctxValue = {
     items: shoppingCart.items,
     addItemToCart: handleAddItemToCart,
+    onUpdateCartItemQuantity:handleUpdateCartItemQuantity
   };
 
   return (
     // In order to initialize the context with provider and give an value which can be used inside the components.
     <CartContext.Provider value={ctxValue}>
       <Header
-        cart={shoppingCart}
-        onUpdateCartItemQuantity={handleUpdateCartItemQuantity}
+        
       />
       <Shop >
         {DUMMY_PRODUCTS.map((product) => (
           <li key={product.id}>
-            <Product {...product} onAddToCart={handleAddItemToCart} />
+            <Product {...product}/>
           </li>
         ))}
       </Shop>

@@ -28,6 +28,12 @@ function App() {
         return prevPickedPlaces;
       }
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
+
+      /** Here we will going to use localstorage feature of browser to store data in the form of string only
+       * The data only be stored in the form of string in it.
+       */
+      const selectedPlaces = JSON.parse(localStorage.getItem('selectedPlaces')) || []
+      if(!selectedPlaces.includes(id)) localStorage.setItem('selectedPlaces',JSON.stringify([id,...selectedPlaces]))
       return [place, ...prevPickedPlaces];
     });
   }
@@ -39,7 +45,8 @@ function App() {
     modal.current.close();
   }
 
-  /** Here this hook will executes when the components loads fully and then it set/update the state so that the code not get into the infinite loop */
+  /** Here this hook will executes when the components loads fully and then it
+   *  set/update the state so that the code not get into the infinite loop */
   useEffect(()=>{
   navigator.geolocation.getCurrentPosition((position)=>{
        setAvailablePlace(sortPlacesByDistance(AVAILABLE_PLACES,position.coords.latitude,position.coords.longitude)) 

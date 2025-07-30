@@ -84,6 +84,17 @@ function App() {
       );
     });
   }, []);
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setAvailablePlace(
+        sortPlacesByDistance(
+          AVAILABLE_PLACES,
+          position.coords.latitude,
+          position.coords.longitude
+        )
+      );
+    });
+  }, []);
 
   return (
     <>

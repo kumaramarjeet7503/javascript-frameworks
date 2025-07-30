@@ -1,7 +1,7 @@
 import {useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
-const Modal = function Modal({ open, children }) {
+const Modal = function Modal({ open, children, onCancel }) {
   const dialog = useRef();
 
   // here dependecies are those which can be changing as per the users action
@@ -14,7 +14,7 @@ const Modal = function Modal({ open, children }) {
   }, [open]);
 
   return createPortal(
-    <dialog className="modal" ref={dialog}>
+    <dialog className="modal" ref={dialog} onCancel={onCancel}>
       {children}
     </dialog>,
     document.getElementById("modal")

@@ -6,7 +6,7 @@ export default function DeleteConfirmation({ onConfirm, onCancel }) {
     console.log("TIMER STARTED")
       onConfirm();
     }, 3000);
-    // This function will executes when the component dismounts from the DOM
+    // This function will executes when the component dismounts from the DOM ok
     return ()=>{
       console.log("TIMER CLEANED")
         clearTimeout(timer)

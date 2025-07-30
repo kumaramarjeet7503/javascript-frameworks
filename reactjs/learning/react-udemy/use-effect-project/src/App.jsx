@@ -39,6 +39,7 @@ function App() {
     modal.current.close();
   }
 
+  /** Here this hook will executes when the components loads fully and then it set/update the state so that the code not get into the infinite loop */
   useEffect(()=>{
   navigator.geolocation.getCurrentPosition((position)=>{
        setAvailablePlace(sortPlacesByDistance(AVAILABLE_PLACES,position.coords.latitude,position.coords.longitude)) 

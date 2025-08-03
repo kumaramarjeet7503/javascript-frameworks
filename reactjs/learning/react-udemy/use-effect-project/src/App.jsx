@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 import Places from "./components/Places.jsx";
 import { AVAILABLE_PLACES } from "./data.js";
@@ -55,7 +55,14 @@ function App() {
     });
   }
 
-  function handleRemovePlace() {
+  /** used use callback function for passing function as a dependency to useEffect, because 
+   * 
+   * javascript interpret functions as everytime new even if is the same function with no value changes in it,
+   * and that is why string,number will use as dependency because they are compared by value ,
+   * 
+   * so in order to use changing function as a dependency we have to use useCallback hook provided by react.
+    */
+  const handleRemovePlace =  useCallback(function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => {
         if(place.id !== selectedPlace.current) return true
@@ -69,7 +76,7 @@ function App() {
       })
     );
     setIsModelOpen(false)
-  }
+  },[])
 
   /** Here this hook will executes when the components loads fully and then it
    *  set/update the state so that the code not get into the infinite loop */

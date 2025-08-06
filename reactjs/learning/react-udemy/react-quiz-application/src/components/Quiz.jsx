@@ -23,6 +23,7 @@ export default function Quiz() {
   shuffledAns.sort(()=>{Math.random() - 0.5})
   return (
     <div id="quiz">
+                <QuestionTimer timeout={timeout} onTimeout={()=>handleAnswerSelection(null)} ></QuestionTimer>
       <div id="questions">
         <h3>{QUESTIONS[currQuestionIndex].text}</h3>
       </div>
@@ -36,7 +37,6 @@ export default function Quiz() {
             );
           })}
         </ul>
-        <QuestionTimer timeout={timeout} onTimeout={()=>handleAnswerSelection(null)} ></QuestionTimer>
       </div>
     </div>
   );
